@@ -15,24 +15,23 @@ class GildedRose
   end
 
   def check_quality(item)
-    item.quality < 0 ? 0 : item.quality
+    item.quality < 0 ? item.quality = 0 : item.quality = item.quality
   end
 
   def update_normal(item)
-    item.sell_in > 0 ? item.quality -= 1 : item.quality -= 2
+    item.sell_in < 0 ? item.quality -= 2 : item.quality -= 1
   end
 
   def update_conjured(item)
-    item.sell_in > 0 ? item.quality -= 2 : item.quality -= 4
+    item.sell_in < 0 ? item.quality -= 4 : item.quality -= 2
   end
 
   def update_ticket(item)
     case item.sell_in
-    when item.sell_in > 10
-      item.quality += 1
+    when item.sell_in > 10 then item.quality += 1
     when 6...10 then item.quality += 2
-    when 1...5 then item.quality += 3
-    else item.quality == 0
+    when 0...5 then item.quality += 3
+    else item.quality = 0
     end
   end
 
@@ -44,8 +43,8 @@ class GildedRose
       update_conjured(item)
     when "Backstage passes to a TAFKAL80ETC concert"
       update_ticket(item)
+    when "Sulfuras, Hand of Ragnaros" then
     else update_normal(item)
-
     end
   end
 

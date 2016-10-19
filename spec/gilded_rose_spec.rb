@@ -66,7 +66,7 @@ describe GildedRose do
 
       it 'if the sell in date passes, the quality is less than 0' do
         bc = GildedRose.new([ticket3])
-        2.times{bc.update_quality}
+        4.times{bc.update_quality}
         expect(ticket3.quality).to eq 0
       end
     end
