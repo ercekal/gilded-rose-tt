@@ -27,14 +27,12 @@ class GildedRose
   end
 
   def update_ticket(item)
-    if item.sell_in > 10
+    case item.sell_in
+    when item.sell_in > 10
       item.quality += 1
-    elsif item.sell_in > 5
-      item.quality += 2
-    elsif item.sell_in >= 0
-      item.quality += 3
-    else
-      item.quality == 0
+    when 6...10 then item.quality += 2
+    when 1...5 then item.quality += 3
+    else item.quality == 0
     end
   end
 
@@ -42,14 +40,12 @@ class GildedRose
     case item.name
     when "Aged Brie"
       update_brie(item)
-    when "Elixir of the Mongoose"
-      update_normal(item)
-    when "+5 Dexterity Vest"
-      update_normal(item)
     when "Conjured Mana Cake"
       update_conjured(item)
     when "Backstage passes to a TAFKAL80ETC concert"
       update_ticket(item)
+    else update_normal(item)
+
     end
   end
 
