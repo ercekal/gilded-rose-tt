@@ -6,11 +6,17 @@ class GildedRose
     @items = items
   end
 
-  # def check_cheese
-  #   @items.each do |item|
-  #     item.name == "Aged Brie" ? true : false
-  #   end
-  # end
+  def ticket?
+    @items.each do |item|
+      item.name == "Backstage passes to a TAFKAL80ETC concert" ? true : false
+    end
+  end
+
+  def conjured?
+    @items.each do |item|
+      item.name == "Conjured Mana Cake" 
+    end
+  end
 
   def update_quality()
     @items.each do |item|
