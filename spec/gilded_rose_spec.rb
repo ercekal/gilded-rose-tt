@@ -64,7 +64,7 @@ describe GildedRose do
         expect{bb.update_quality}.to change{ticket2.quality}.by 3
       end
 
-      it 'if the sell in date passes, the quality is 0' do
+      it 'if the sell in date passes, the quality is less than 0' do
         bc = GildedRose.new([ticket3])
         2.times{bc.update_quality}
         expect(ticket3.quality).to eq 0
