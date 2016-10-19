@@ -53,7 +53,6 @@ class GildedRose
     end
   end
 
-
   def update_quality()
     @items.each do |item|
       item_checker(item)
